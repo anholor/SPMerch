@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPMerch</title>
+  <link rel="stylesheet" href="script/script.js">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="cursor" id="cursor"></div>
+
+<header>
+  <nav id="nav">
+    <div class="logo">SPMerch</div>
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="shop.html">Магазин</a></li>
+      <li><a href="index.html#about">Про нас</a></li>
+      <li><a href="index.html#contacts">Контакти</a></li>
+    </ul>
+    <div class="nav-icons">
+      <div class="cart-wrapper">
+        <a class="icon cart" id="cartIcon" href="cart.html"></a>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <a class="icon user" href="profile.html"></a>
+    </div>
+  </nav>
+
+  <video class="headrig-video" autoplay muted loop playsinline>
+    <source src="images/LogoAnim.mp4" type="video/mp4" />
+  </video>
+
+  <div class="headrig-text">BE CONSUMED...</div>
+  <div class="scroll-indicator">↓ SCROLL ↓</div>
+</header>
+
+<main>
+  <section class="covers reveal">
+    <div class="cover"><a href="https://open.spotify.com/album/0tqVAQUdpTqHiMZzSAC5O1"><img src="images/releases/UNDER YOUR SKIN.jpg" alt="UNDER YOUR SKIN"></a></div>
+    <div class="cover"><a href="https://open.spotify.com/track/3yMU4otI6sZZBNSq2TYdXf"><img src="images/releases/WICK.jpg" alt="WICK"></a></div>
+    <div class="cover"><a href="https://open.spotify.com/track/5RSZLtJ4AzbggHqYLywVW7"><img src="images/releases/MINDFRAME.jpg" alt="MINDFRAME"></a></div>
+    <div class="cover"><a href="https://open.spotify.com/album/38eyJBCScUf3CnlH3JhYrc"><img src="images/releases/SUPERBLOOM.jpg" alt="SUPERBLOOM"></a></div>
+    <div class="cover"><a href="https://open.spotify.com/album/5bApeSJJTjB0vyym2GA9xl"><img src="images/releases/IRIDESCENT.jpg" alt="IRIDESCENT"></a></div>
+  </section>
+
+  <section id="shop" class="products-section reveal">
+    <h2 class="section-title">МЕРЧ</h2>
+    <div class="products">
+      <div class="product">
+        <img src="images/products/hoodie.png" alt="Hoodie">
+        <h3>Silent Planet Hoodie</h3>
+        <div class="price">1200 ₴</div>
+        <div class="buttons">
+          <button><span>Переглянути</span></button>
+          <button class="icon-btn favIc" onclick="animateBtn(this)"></button>
+          <button class="icon-btn cartIc" onclick="animateBtn(this)"></button>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="images/products/tour Tshirt.jpg" alt="T-Shirt">
+        <h3>Tour T-Shirt</h3>
+        <div class="price">900 ₴</div>
+        <div class="buttons">
+          <button><span>Переглянути</span></button>
+          <button class="icon-btn favIc" onclick="animateBtn(this)"></button>
+          <button class="icon-btn cartIc" onclick="animateBtn(this)"></button>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="images/products/superbloom vinyl.png" alt="Vinyl">
+        <h3>Limited Vinyl</h3>
+        <div class="price">1500 ₴</div>
+        <div class="buttons">
+          <button><span>Переглянути</span></button>
+          <button class="icon-btn favIc" onclick="animateBtn(this)"></button>
+          <button class="icon-btn cartIc" onclick="animateBtn(this)"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="viewall">
+      <button id="viewAllBtn" onclick="window.location.href='shop.html'"><span>ПЕРЕГЛЯНУТИ ВСЕ</span></button>
+    </div>
+  </section>
+
+  <section id="about" class="reveal">
+    <img src="images/SilentPlanet.png" alt="Band">
+    <div>
+      <h2>ПРО НАС</h2>
+      <p>
+        Silent Planet — американський металкор гурт, відомий своєю глибокою лірикою,
+        концептуальністю та атмосферою екзистенційної темряви. Їхня музика поєднує 
+        агресивні риффи з філософськими текстами, що торкаються тем людської природи,
+        соціальної справедливості та внутрішніх конфліктів.
+      </p>
+    </div>
+  </section>
+</main>
+<footer id="contacts">
+  <div class="footer-logo"><img src="images/SPLogo.png" alt=""></div>
+  <div class="socials">
+    <a href="#" class="social">
+      <img src="images/icons/Facebook.png" alt="Facebook">
+    </a>
+    <a href="#" class="social">
+      <img src="images/icons/instalogo.png" alt="Instagram">
+    </a>
+    <a href="#" class="social">
+      <img src="images/icons/youtubelogo.png" alt="YouTube">
+    </a>
+    <a href="#" class="social">
+      <img src="images/icons/tiktoklogo.png" alt="TikTok">
+    </a>
+  </div>
+  <div class="subscribe">
+    <input type="email" id="email" placeholder="Ваш email">
+    <button onclick="subscribe()"><span>Підписатись</span></button>
+  </div>
+  <p style="margin-top:40px; color:#555; font-size:12px;">© 2025 Головатчук Андрій Іванович</p>
+</footer>
+
+  <script src="script/script.js"></script>
+</body>
+</html>

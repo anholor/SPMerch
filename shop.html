@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPMerch — Магазин</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="cursor" id="cursor"></div>
+  <nav id="nav">
+    <div class="logo">SPMerch</div>
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="shop.html">Магазин</a></li>
+      <li><a href="index.html#about">Про нас</a></li>
+      <li><a href="index.html#contacts">Контакти</a></li>
+    </ul>
+    <div class="nav-icons">
+      <div class="cart-wrapper">
+        <a class="icon cart" id="cartIcon" href="cart.html"></a>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <a class="icon user" href="profile.html"></a>
+    </div>
+  </nav>
+
+<main>
+<div class="shop-header">
+    <h1 class="shop-title">МАГАЗИН</h1>
+    <p class="shop-subtitle">ОФІЦІЙНИЙ МЕРЧ SILENT PLANET</p>
+</div>
+
+<div class="filters-section">
+    <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Пошук товарів...">
+    <span class="search-icon">🔍</span>
+    </div>
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all"><span>Все</span></button>
+        <button class="filter-btn" data-filter="clothing"><span>Одяг</span></button>
+        <button class="filter-btn" data-filter="vinyl"><span>Вініл</span></button>
+        <button class="filter-btn" data-filter="accessories"><span>Аксесуари</span></button>
+        <button class="filter-btn" data-filter="limited"><span>Лімітовані</span></button>
+    </div>
+</div>
+
+<div id="productsContainer">
+    <section class="category-section" data-category="clothing">
+    <div class="category-header">
+        <h2 class="category-title">ОДЯГ</h2>
+        <span class="category-count">5 товарів</span>
+    </div>
+    <div class="products-scroll">
+        <div class="product-card" data-id="1">
+            <img src="images/products/hoodie.png" alt="Product" class="product-image">
+            <p class="product-category">ОДЯГ</p>
+            <h3 class="product-name">Silent Planet Hoodie</h3>
+            <div class="product-price">1200 ₴</div>
+            <div class="product-buttons">
+                <button class="product-btn view-btn"><span>Переглянути</span></button>
+                <button class="product-btn icon-btn" onclick="addToFavorites(this)" aria-label="Додати в улюблене"><img src="images/icons/fav.png" alt=""></button>
+                <button class="product-btn icon-btn" onclick="handleAddToCart(this)" aria-label="Додати в кошик"><img src="images/icons/cartIcn.png" alt=""></button>
+            </div>
+        </div>
+
+        <div class="product-card" data-id="2">
+        <img src="images/products/tour Tshirt.jpg" alt="Product" class="product-image">
+        <p class="product-category">ОДЯГ</p>
+        <h3 class="product-name">Tour T-Shirt 2024</h3>
+        <div class="product-price">800 ₴</div>
+        <div class="product-buttons">
+            <button class="product-btn view-btn"><span>Переглянути</span></button>
+            <button class="product-btn icon-btn" onclick="addToFavorites(this)" aria-label="Додати в улюблене"><img src="images/icons/fav.png" alt=""></button>
+            <button class="product-btn icon-btn" onclick="handleAddToCart(this)" aria-label="Додати в кошик"><img src="images/icons/cartIcn.png" alt=""></button>
+        </div>
+        </div>
+
+        <div class="product-card" data-id="3">
+          <img src="images/products/everything-was-sound-cover-art-tshirt-white.jpg" alt="Product" class="product-image">
+          <p class="product-category">ОДЯГ</p>
+          <h3 class="product-name">Everything Was Sound Tee</h3>
+          <div class="product-price">750 ₴</div>
+          <div class="product-buttons">
+            <button class="product-btn view-btn"><span>Переглянути</span></button>
+            <button class="product-btn icon-btn" onclick="addToFavorites(this)" aria-label="Додати в улюблене"><img src="images/icons/fav.png" alt=""></button>
+            <button class="product-btn icon-btn" onclick="handleAddToCart(this)" aria-label="Додати в кошик"><img src="images/icons/cartIcn.png" alt=""></button>
+          </div>
+        </div>
+
+        <div class="product-card" data-id="4">
+            <img src="images/products/bandlogosleeve.jpg" alt="Product" class="product-image">
+            <p class="product-category">ОДЯГ</p>
+            <h3 class="product-name">Band Logo Longsleeve</h3>
+            <div class="product-price">950 ₴</div>
+            <div class="product-buttons">
+                <button class="product-btn view-btn">Переглянути</button>
+                <button class="product-btn icon-btn" onclick="addToFavorites(this)" aria-label="Додати в улюблене"><img src="images/icons/fav.png" alt=""></button>
+                <button class="product-btn icon-btn" onclick="handleAddToCart(this)" aria-label="Додати в кошик"><img src="images/icons/cartIcn.png" alt=""></button>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="category-section" data-category="vinyl">
+        <div class="category-header">
+            <h2 class="category-title">ВІНІЛ</h2>
+            <span class="category-count">4 товари</span>
+        </div>
+        <div class="products-scroll">
+            <div class="product-card" data-id="6">
+                <img src="images/products/EWSvinyl.jpg" alt="Product" class="product-image">
+                <p class="product-category">ВІНІЛ</p>
+                <h3 class="product-name">Everything Was Sound LP</h3>
+                <div class="product-price">1400 ₴</div>
+                <div class="product-buttons">
+                    <button class="product-btn view-btn"><span>Переглянути</span></button>
+                    <button class="product-btn icon-btn" onclick="addToFavorites(this)" aria-label="Додати в улюблене"><img src="images/icons/fav.png" alt=""></button>
+                    <button class="product-btn icon-btn" onclick="handleAddToCart(this)" aria-label="Додати в кошик"><img src="images/icons/cartIcn.png" alt=""></button>
+                </div>
+            </div>
+
+        <div class="product-card" data-id="7">
+            <img src="images/products/TNGSbinyl.jpg" alt="Product" class="product-image">
+            <p class="product-category">ВІНІЛ</p>
+            <h3 class="product-name">The Night God Slept Vinyl</h3>
+            <div class="product-price">1300 ₴</div>
+            <div class="product-buttons">
+                <button class="product-btn view-btn"><span>Переглянути</span></button>
+                <button class="product-btn icon-btn" onclick="addToFavorites(this)" aria-label="Додати в улюблене"><img src="images/icons/fav.png" alt=""></button>
+                <button class="product-btn icon-btn" onclick="handleAddToCart(this)" aria-label="Додати в кошик"><img src="images/icons/cartIcn.png" alt=""></button>
+            </div>
+        </div>
+
+        <div class="product-card" data-id="8">
+            <img src="images/products/Iridescentvinyl.jpg" alt="Product" class="product-image">
+            <p class="product-category">ВІНІЛ | ЛІМІТОВАНИЙ</p>
+            <h3 class="product-name">Iridescent Limited Edition</h3>
+            <div class="product-price">1800 ₴</div>
+            <div class="product-buttons">
+                <button class="product-btn view-btn"><span>Переглянути</span></button>
+                <button class="product-btn icon-btn" onclick="addToFavorites(this)" aria-label="Додати в улюблене"><img src="images/icons/fav.png" alt=""></button>
+                <button class="product-btn icon-btn" onclick="handleAddToCart(this)" aria-label="Додати в кошик"><img src="images/icons/cartIcn.png" alt=""></button>
+            </div>
+        </div>
+
+        <div class="product-card" data-id="9">
+            <img src="images/products/TEHBvinyl.jpg" alt="Product" class="product-image">
+            <p class="product-category">ВІНІЛ</p>
+            <h3 class="product-name">When The End Began LP</h3>
+            <div class="product-price">1350 ₴</div>
+            <div class="product-buttons">
+                <button class="product-btn view-btn"><span>Переглянути</span></button>
+                <button class="product-btn icon-btn" onclick="addToFavorites(this)" aria-label="Додати в улюблене"><img src="images/icons/fav.png" alt=""></button>
+                <button class="product-btn icon-btn" onclick="handleAddToCart(this)" aria-label="Додати в кошик"><img src="images/icons/cartIcn.png" alt=""></button>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+</main>
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <div class="close-modal" id="closeModal">×</div>
+
+        <div class="modal-body">
+        <img src="" alt="Product" class="modal-image" id="modalImage">
+
+        <div class="modal-info">
+            <h2 id="modalTitle"></h2>
+            <div class="modal-category" id="modalCategory"></div>
+            <div class="modal-price" id="modalPrice"></div>
+
+            <p class="modal-description" id="modalDescription">
+            Офіційний мерч гурту Silent Planet. Висока якість матеріалів та обмежений тираж.
+            </p>
+
+            <div class="modal-features">
+            <h4>ОСОБЛИВОСТІ</h4>
+            <ul>
+                <li>Офіційний мерч</li>
+                <li>Висока якість</li>
+                <li>Обмежений тираж</li>
+            </ul>
+            </div>
+
+            <div class="modal-actions">
+            <button class="modal-btn primary" id="modalAddToCart" onclick="addToCartFromModal()">
+                <span>ДОДАТИ В КОШИК</span>
+            </button>
+            <button class="modal-btn" onclick="addToFavoritesFromModal()">
+                <span>В УЛЮБЛЕНЕ</span>
+            </button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+  <script src="script/script.js">
+
+</script>
+</body>

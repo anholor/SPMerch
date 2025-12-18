@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кошик - SPMerch</title>
+  <link rel="stylesheet" href="style/cart.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="cursor" id="cursor"></div>
+
+<header>
+  <nav id="nav">
+    <div class="logo">SPMerch</div>
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="shop.html">Магазин</a></li>
+      <li><a href="index.html#about">Про нас</a></li>
+      <li><a href="index.html#contacts">Контакти</a></li>
+    </ul>
+    <div class="nav-icons">
+      <div class="cart-wrapper">
+        <a class="icon cart" id="cartIcon" href="cart.html"></a>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <a class="icon user" href="profile.html"></a>
+    </div>
+  </nav>
+</header>
+
+<main class="cart-main">
+  <div class="cart-header">
+    <h1 class="cart-title">ВАШ КОШИК</h1>
+    <p class="cart-subtitle">Перегляньте та оформіть ваше замовлення</p>
+  </div>
+
+  <div class="cart-container">
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-summary">
+      <div class="summary-card">
+        <h2>ПІДСУМОК</h2>
+        
+        <div class="summary-row">
+          <span>Товарів:</span>
+          <span id="totalItems">0</span>
+        </div>
+        
+        <div class="summary-row">
+          <span>Вартість товарів:</span>
+          <span id="subtotal">0 ₴</span>
+        </div>
+        
+        <div class="summary-row">
+          <span>Доставка:</span>
+          <span id="shipping">Безкоштовно</span>
+        </div>
+        
+        <div class="summary-divider"></div>
+        
+        <div class="summary-row total">
+          <span>РАЗОМ:</span>
+          <span id="total">0 ₴</span>
+        </div>
+
+        <button class="checkout-btn" onclick="checkout()">
+          <span>ОФОРМИТИ ЗАМОВЛЕННЯ</span>
+        </button>
+
+        <button class="continue-btn" onclick="window.location.href='shop.html'">
+          <span>ПРОДОВЖИТИ ПОКУПКИ</span>
+        </button>
+      </div>
+
+      <div class="promo-card">
+        <h3>ПРОМОКОД</h3>
+        <div class="promo-input-wrapper">
+          <input type="text" id="promoCode" placeholder="Введіть промокод">
+          <button onclick="applyPromo()"><span>ЗАСТОСУВАТИ</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-cart" id="emptyCart" style="display:none;">
+    <div class="empty-icon"><img src="images/icons/carIcn2.png" alt=""></div>
+    <h2>ВАШ КОШИК ПОРОЖНІЙ</h2>
+    <p>Додайте товари, щоб продовжити покупки</p>
+    <button class="shop-btn" onclick="window.location.href='shop.html'">
+      <span>ПЕРЕЙТИ ДО МАГАЗИНУ</span>
+    </button>
+  </div>
+</main>
+
+<footer id="contacts">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>ДОПОМОГА</h3>
+      <ul>
+        <li><a href="#">Доставка та оплата</a></li>
+        <li><a href="#">Повернення товару</a></li>
+        <li><a href="#">Гарантія</a></li>
+        <li><a href="#">Часті питання</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>КОНТАКТИ</h3>
+      <ul>
+        <li>support@spmerch.ua</li>
+        <li>+380 (XX) XXX-XX-XX</li>
+        <li>Пн-Пт: 9:00 - 18:00</li>
+        <li>Івано-Франківськ, Україна</li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>СОЦІАЛЬНІ МЕРЕЖІ</h3>
+      <div class="socials">
+        <a href="#" class="social">
+          <img src="images/icons/Facebook.png" alt="Facebook">
+        </a>
+        <a href="#" class="social">
+          <img src="images/icons/instalogo.png" alt="Instagram">
+        </a>
+        <a href="#" class="social">
+          <img src="images/icons/youtubelogo.png" alt="YouTube">
+        </a>
+        <a href="#" class="social">
+          <img src="images/icons/tiktoklogo.png" alt="TikTok">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Головатчук Андрій Іванович</p>
+  </div>
+</footer>
+
+<script src="script/cart.js"></script>
+
+</body>
+</html>

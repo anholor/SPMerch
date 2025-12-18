@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Профіль - SPMerch</title>
+  <link rel="stylesheet" href="style/profile.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="cursor" id="cursor"></div>
+
+<header>
+  <nav id="nav">
+    <div class="logo">SPMerch</div>
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="shop.html">Магазин</a></li>
+      <li><a href="index.html#about">Про нас</a></li>
+      <li><a href="index.html#contacts">Контакти</a></li>
+    </ul>
+    <div class="nav-icons">
+      <div class="cart-wrapper">
+        <a class="icon cart" id="cartIcon" href="cart.html"></a>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <a class="icon user" href="profile.html"></a>
+    </div>
+  </nav>
+
+</header>
+
+<main class="profile-main">
+  <div class="profile-header">
+    <h1 class="profile-title">МІЙ ПРОФІЛЬ</h1>
+    <p class="profile-subtitle">Керуйте своїм акаунтом</p>
+  </div>
+
+  <div class="profile-container">
+    <aside class="profile-sidebar">
+      <div class="profile-card">
+        <div class="profile-avatar">
+          <img src="images/default-avatar.png" alt="Avatar" id="avatarImg">
+          <div class="avatar-overlay">
+            <label for="avatarUpload" class="avatar-upload-btn">📷</label>
+            <input type="file" id="avatarUpload" accept="image/*" style="display:none;">
+          </div>
+        </div>
+        <h2 class="profile-name" id="profileName">Ім'я Користувача</h2>
+        <p class="profile-email" id="profileEmail">email@example.com</p>
+        <div class="profile-stats">
+          <div class="stat">
+            <span class="stat-value" id="ordersCount">0</span>
+            <span class="stat-label">Замовлень</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="favoritesCount">0</span>
+            <span class="stat-label">Улюблене</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="profile-menu">
+        <a href="#personal" class="menu-item active" data-tab="personal">
+          <span class="menu-icon">👤</span>
+          <span>Особисті дані</span>
+        </a>
+        <a href="#orders" class="menu-item" data-tab="orders">
+          <span class="menu-icon">📦</span>
+          <span>Мої замовлення</span>
+        </a>
+        <a href="#addresses" class="menu-item" data-tab="addresses">
+          <span class="menu-icon">📍</span>
+          <span>Адреси</span>
+        </a>
+        <a href="#security" class="menu-item" data-tab="security">
+          <span class="menu-icon">🔒</span>
+          <span>Безпека</span>
+        </a>
+      </nav>
+    </aside>
+
+    <div class="profile-content">
+      <!-- ОСОБИСТІ ДАНІ -->
+      <section class="content-section active" id="personal">
+        <h2 class="section-title">ОСОБИСТІ ДАНІ</h2>
+        <form class="profile-form" id="personalForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>ІМ'Я</label>
+              <input type="text" id="firstName" placeholder="Іван" required>
+            </div>
+            <div class="form-group">
+              <label>ПРІЗВИЩЕ</label>
+              <input type="text" id="lastName" placeholder="Іваненко" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>EMAIL</label>
+            <input type="email" id="email" placeholder="email@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label>ТЕЛЕФОН</label>
+            <input type="tel" id="phone" placeholder="+380 XX XXX XX XX" required>
+          </div>
+
+          <div class="form-group">
+            <label>ДАТА НАРОДЖЕННЯ</label>
+            <input type="date" id="birthdate">
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="save-btn">
+              <span>ЗБЕРЕГТИ ЗМІНИ</span>
+            </button>
+            <button type="reset" class="cancel-btn">
+              <span>СКАСУВАТИ</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- МОЇ ЗАМОВЛЕННЯ -->
+      <section class="content-section" id="orders">
+        <h2 class="section-title">МОЇ ЗАМОВЛЕННЯ</h2>
+        <div class="orders-list" id="ordersList">
+          <div class="empty-state">
+            <div class="empty-icon">📦</div>
+            <h3>У вас ще немає замовлень</h3>
+            <p>Перейдіть до магазину та зробіть своє перше замовлення</p>
+            <button class="shop-btn" onclick="window.location.href='shop.html'">
+              <span>ПЕРЕЙТИ ДО МАГАЗИНУ</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- АДРЕСИ -->
+      <section class="content-section" id="addresses">
+        <h2 class="section-title">АДРЕСИ ДОСТАВКИ</h2>
+        <div class="addresses-grid" id="addressesList">
+          <div class="address-card add-new">
+            <div class="add-icon">+</div>
+            <p>Додати нову адресу</p>
+          </div>
+        </div>
+
+        <!-- Форма додавання адреси -->
+        <div class="address-form" id="addressForm" style="display:none;">
+          <h3>НОВА АДРЕСА</h3>
+          <form id="newAddressForm">
+            <div class="form-group">
+              <label>НАЗВА АДРЕСИ</label>
+              <input type="text" placeholder="Дім, Робота, тощо" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>МІСТО</label>
+                <input type="text" placeholder="Івано-Франківськ" required>
+              </div>
+              <div class="form-group">
+                <label>ОБЛАСТЬ</label>
+                <input type="text" placeholder="Івано-Франківська" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>ВУЛИЦЯ, БУДИНОК, КВАРТИРА</label>
+              <input type="text" placeholder="вул. Незалежності, 1, кв. 1" required>
+            </div>
+            <div class="form-group">
+              <label>ІНДЕКС</label>
+              <input type="text" placeholder="76000" required>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="save-btn">
+                <span>ЗБЕРЕГТИ АДРЕСУ</span>
+              </button>
+              <button type="button" class="cancel-btn" onclick="closeAddressForm()">
+                <span>СКАСУВАТИ</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- БЕЗПЕКА -->
+      <section class="content-section" id="security">
+        <h2 class="section-title">БЕЗПЕКА АКАУНТУ</h2>
+        <form class="profile-form" id="securityForm">
+          <div class="form-group">
+            <label>ПОТОЧНИЙ ПАРОЛЬ</label>
+            <input type="password" id="currentPassword" placeholder="••••••••" required>
+          </div>
+
+          <div class="form-group">
+            <label>НОВИЙ ПАРОЛЬ</label>
+            <input type="password" id="newPassword" placeholder="••••••••" required>
+          </div>
+
+          <div class="form-group">
+            <label>ПІДТВЕРДІТЬ НОВИЙ ПАРОЛЬ</label>
+            <input type="password" id="confirmNewPassword" placeholder="••••••••" required>
+          </div>
+
+          <div class="password-requirements">
+            <p>Вимоги до пароля:</p>
+            <ul>
+              <li>Мінімум 8 символів</li>
+              <li>Принаймні одна велика літера</li>
+              <li>Принаймні одна цифра</li>
+              <li>Принаймні один спеціальний символ</li>
+            </ul>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="save-btn">
+              <span>ЗМІНИТИ ПАРОЛЬ</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="danger-zone">
+          <h3>НЕБЕЗПЕЧНА ЗОНА</h3>
+          <p>Видалення акаунту є незворотнім. Всі ваші дані будуть втрачені.</p>
+          <button class="delete-btn">
+            <span>ВИДАЛИТИ АКАУНТ</span>
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer id="contacts">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>ДОПОМОГА</h3>
+      <ul>
+        <li><a href="#">Доставка та оплата</a></li>
+        <li><a href="#">Повернення товару</a></li>
+        <li><a href="#">Гарантія</a></li>
+        <li><a href="#">Часті питання</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>КОНТАКТИ</h3>
+      <ul>
+        <li>📧 support@spmerch.ua</li>
+        <li>📞 +380 (XX) XXX-XX-XX</li>
+        <li>🕐 Пн-Пт: 9:00 - 18:00</li>
+        <li>📍 Івано-Франківськ, Україна</li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>СОЦІАЛЬНІ МЕРЕЖІ</h3>
+      <div class="socials">
+        <a href="#" class="social">
+          <img src="images/icons/Facebook.png" alt="Facebook">
+        </a>
+        <a href="#" class="social">
+          <img src="images/icons/instalogo.png" alt="Instagram">
+        </a>
+        <a href="#" class="social">
+          <img src="images/icons/youtubelogo.png" alt="YouTube">
+        </a>
+        <a href="#" class="social">
+          <img src="images/icons/tiktoklogo.png" alt="TikTok">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Головатчук Андрій Іванович</p>
+  </div>
+</footer>
+
+<script src="script/profile.js"></script>
+
+</body>
+</html>

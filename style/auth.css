@@ -1,0 +1,594 @@
+:root{
+  --black:#000;
+  --white:#fff;
+  --gray:#aaa;
+  --dark:#0b0b0b;
+  --accent:#ffffff;
+}
+
+[data-theme="light"] {
+  --black:#f5f5f5;
+  --white:#000;
+  --gray:#555;
+  --dark:#ffffff;
+  --accent:#000000;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  background:var(--black);
+  color:var(--white);
+  overflow-x:hidden;
+  padding-top:70px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a{color:inherit;text-decoration:none; cursor:none;}
+
+/* ====== ХЕДЕР ====== */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+}
+
+nav{
+  width:100%;
+  height:70px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 40px;
+  background:rgba(0,0,0,0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  transition: background 0.3s ease;
+}
+
+[data-theme="light"] nav{
+  background:rgba(255,255,255,0.95);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.logo{
+  font-size:20px;
+  letter-spacing:4px;
+  font-weight:bold;
+  cursor:none;
+  transition: all 0.3s ease;
+}
+
+.logo:hover{
+  letter-spacing:6px;
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+nav ul{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+
+nav li{
+  position:relative;
+  font-size:14px;
+  letter-spacing:2px;
+  transition: all 0.3s ease;
+}
+
+nav li::after{
+  content:"";
+  position:absolute;
+  bottom:-5px; left:50%;
+  width:0; height:2px;
+  background:var(--white);
+  transition:0.4s ease;
+  transform:translateX(-50%);
+}
+
+nav li:hover{
+  transform:translateY(-2px);
+}
+
+nav li:hover::after{width:100%;}
+
+.nav-icons{
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor:none;
+  transition: all 0.3s ease;
+}
+
+.icon:hover{
+  transform:scale(1.2);
+}
+
+.cart-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background: #fff;
+  color: #000;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.cart {
+  background-image: url("../images/icons/carIcn2.png");
+}
+
+.user {
+  background-image: url("../images/icons/profileIcn.png");
+}
+
+/* ====== КУРСОР ====== */
+.cursor{
+  position:fixed;
+  top:0; left:0;
+  width:20px;
+  height:20px;
+  border:2px solid var(--white);
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:transform 0.1s ease, width 0.3s ease, height 0.3s ease;
+  z-index:9999;
+  mix-blend-mode:difference;
+}
+
+.cursor.active{
+  width:50px;
+  height:50px;
+  border-width:3px;
+}
+
+/* ====== ОСНОВНИЙ КОНТЕНТ ====== */
+.auth-main{
+  min-height:calc(100vh - 70px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:60px 20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.auth-container{
+  position:relative;
+  z-index:1;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* ====== ДЕКОРАЦІЇ ====== */
+.auth-decoration{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:0;
+}
+
+.decoration-circle{
+  position:absolute;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,0.05), transparent);
+  animation: float 20s infinite ease-in-out;
+}
+
+.circle-1{
+  width:600px;
+  height:600px;
+  top:-200px;
+  right:-200px;
+  animation-delay:0s;
+}
+
+.circle-2{
+  width:400px;
+  height:400px;
+  bottom:-100px;
+  left:-100px;
+  animation-delay:5s;
+}
+
+.circle-3{
+  width:300px;
+  height:300px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  animation-delay:10s;
+}
+
+@keyframes float{
+  0%, 100%{transform:translate(0, 0) scale(1);}
+  33%{transform:translate(30px, -30px) scale(1.1);}
+  66%{transform:translate(-30px, 30px) scale(0.9);}
+}
+
+/* ====== ФОРМА ====== */
+.auth-box{
+  background:rgba(8, 8, 8, 0.95);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:50px;
+  max-width:500px;
+  width:100%;
+  backdrop-filter:blur(10px);
+  position:relative;
+  overflow:hidden;
+}
+
+[data-theme="light"] .auth-box{
+  background:rgba(255, 255, 255, 0.95);
+  border-color:rgba(0,0,0,0.1);
+}
+
+.auth-box::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+  height:2px;
+  background:linear-gradient(90deg, transparent, var(--white), transparent);
+}
+
+.register-box{
+  max-width:600px;
+}
+
+.auth-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.auth-header h1{
+  font-size:36px;
+  letter-spacing:6px;
+  margin-bottom:10px;
+  text-shadow: 0 0 30px rgba(255,255,255,0.3);
+}
+
+.auth-header p{
+  color:var(--gray);
+  letter-spacing:2px;
+  font-size:14px;
+}
+
+/* ====== ПОЛЯ ФОРМИ ====== */
+.auth-form{
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.form-group{
+  position:relative;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:8px;
+  font-size:12px;
+  letter-spacing:2px;
+  color:var(--gray);
+}
+
+.form-group input{
+  width:100%;
+  padding:14px;
+  background:rgba(0,0,0,0.3);
+  border:1px solid rgba(255,255,255,0.2);
+  color:var(--white);
+  font-size:14px;
+  letter-spacing:1px;
+  transition:all 0.3s ease;
+}
+
+[data-theme="light"] .form-group input{
+  background:rgba(0,0,0,0.05);
+  border-color:rgba(0,0,0,0.2);
+  color:var(--white);
+}
+
+.form-group input:focus{
+  outline:none;
+  border-color:var(--white);
+  background:rgba(0,0,0,0.5);
+  box-shadow:0 0 20px rgba(255,255,255,0.1);
+}
+
+[data-theme="light"] .form-group input:focus{
+  background:rgba(0,0,0,0.1);
+  box-shadow:0 0 20px rgba(0,0,0,0.1);
+}
+
+.password-toggle{
+  position:absolute;
+  right:15px;
+  top:38px;
+  cursor:none;
+  font-size:18px;
+  opacity:0.6;
+  transition:all 0.3s ease;
+  user-select:none;
+}
+
+.password-toggle:hover{
+  opacity:1;
+  transform:scale(1.2);
+}
+
+/* ====== ОПЦІЇ ФОРМИ ====== */
+.form-options{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:13px;
+  margin-top:-10px;
+}
+
+.checkbox-wrapper{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  cursor:none;
+}
+
+.checkbox-wrapper input{
+  cursor:none;
+  width:18px;
+  height:18px;
+  accent-color:var(--white);
+}
+
+.checkbox-wrapper.terms{
+  font-size:12px;
+  color:var(--gray);
+}
+
+.checkbox-wrapper a{
+  color:var(--white);
+  text-decoration:underline;
+}
+
+.forgot-link{
+  color:var(--gray);
+  transition:all 0.3s ease;
+}
+
+.forgot-link:hover{
+  color:var(--white);
+  text-decoration:underline;
+}
+
+/* ====== КНОПКИ ====== */
+.auth-btn{
+  width:100%;
+  background:transparent;
+  border:2px solid var(--white);
+  color:var(--white);
+  padding:16px;
+  cursor:none;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing:3px;
+  font-size:14px;
+  font-weight:bold;
+  position:relative;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.auth-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--white);
+  transform:translateY(100%);
+  transition:0.4s ease;
+}
+
+.auth-btn:hover::before{
+  transform:translateY(0);
+}
+
+.auth-btn:hover{
+  color:var(--black);
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(255,255,255,0.2);
+}
+
+.auth-btn span{
+  position:relative;
+  z-index:1;
+}
+
+/* ====== РОЗДІЛЬНИК ====== */
+.auth-divider{
+  position:relative;
+  text-align:center;
+  margin:30px 0;
+}
+
+.auth-divider::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.auth-divider span{
+  position:relative;
+  background:rgba(8, 8, 8, 0.95);
+  padding:0 15px;
+  font-size:12px;
+  letter-spacing:2px;
+  color:var(--gray);
+}
+
+[data-theme="light"] .auth-divider span{
+  background:rgba(255, 255, 255, 0.95);
+}
+
+/* ====== СОЦІАЛЬНИЙ ВХІД ====== */
+.social-login{
+  display:flex;
+  gap:15px;
+}
+
+.social-btn{
+  flex:1;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.2);
+  color:var(--white);
+  padding:14px;
+  cursor:none;
+  transition:all 0.3s ease;
+  font-size:13px;
+  letter-spacing:1px;
+}
+
+.social-btn:hover{
+  background:rgba(255,255,255,0.1);
+  border-color:rgba(255,255,255,0.4);
+  transform:translateY(-2px);
+}
+
+/* ====== ФУТЕР ФОРМИ ====== */
+.auth-footer{
+  text-align:center;
+  margin-top:30px;
+  padding-top:30px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  font-size:14px;
+  color:var(--gray);
+}
+
+.auth-footer a{
+  color:var(--white);
+  font-weight:bold;
+  transition:all 0.3s ease;
+}
+
+.auth-footer a:hover{
+  text-decoration:underline;
+  letter-spacing:1px;
+}
+
+/* ====== СИЛА ПАРОЛЯ ====== */
+.password-strength{
+  margin-top:-10px;
+}
+
+.strength-bar{
+  height:4px;
+  background:rgba(255,255,255,0.1);
+  border-radius:2px;
+  overflow:hidden;
+  margin-bottom:8px;
+}
+
+.strength-fill{
+  height:100%;
+  width:0;
+  background:#ff4444;
+  transition:all 0.3s ease;
+}
+
+.strength-fill.weak{width:33%; background:#ff4444;}
+.strength-fill.medium{width:66%; background:#ffaa44;}
+.strength-fill.strong{width:100%; background:#44ff44;}
+
+.strength-text{
+  font-size:12px;
+  color:var(--gray);
+  letter-spacing:1px;
+}
+
+/* ====== АДАПТИВНІСТЬ ====== */
+@media (max-width: 768px) {
+  .auth-box{
+    padding:30px 20px;
+  }
+
+  .auth-header h1{
+    font-size:28px;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+  }
+
+  .social-login{
+    flex-direction:column;
+  }
+
+  nav{
+    padding:0 20px;
+  }
+
+  nav ul{
+    gap:15px;
+  }
+
+  nav li{
+    font-size:12px;
+  }
+
+  .user-dropdown{
+    right:-20px;
+  }
+}

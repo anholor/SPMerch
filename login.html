@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Вхід - SPMerch</title>
+  <link rel="stylesheet" href="style/auth.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<header>
+  <nav id="nav">
+    <div class="logo">SPMerch</div>
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="shop.html">Магазин</a></li>
+      <li><a href="index.html#about">Про нас</a></li>
+      <li><a href="index.html#contacts">Контакти</a></li>
+    </ul>
+    <div class="nav-icons">
+      <div class="cart-wrapper">
+        <a class="icon cart" id="cartIcon" href="cart.html"></a>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <a class="icon user" href="profile.html"></a>
+    </div>
+  </nav>
+</header>
+
+<main class="auth-main">
+  <div class="auth-container">
+    <div class="auth-box">
+      <div class="auth-header">
+        <h1>ВХІД</h1>
+        <p>Увійдіть до свого акаунту</p>
+      </div>
+
+      <form class="auth-form" id="loginForm">
+        <div class="form-group">
+          <label for="email">EMAIL</label>
+          <input type="email" id="email" placeholder="your@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">ПАРОЛЬ</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+          <div class="password-toggle" onclick="togglePassword()">👁️</div>
+        </div>
+
+        <div class="form-options">
+          <label class="checkbox-wrapper">
+            <input type="checkbox" id="remember">
+            <span>Запам'ятати мене</span>
+          </label>
+          <a href="#" class="forgot-link">Забули пароль?</a>
+        </div>
+
+        <button type="submit" class="auth-btn">
+          <span>УВІЙТИ</span>
+        </button>
+      </form>
+
+      <div class="auth-divider">
+        <span>АБО</span>
+      </div>
+
+      <div class="social-login">
+        <button class="social-btn google">
+          <span>🔍 Google</span>
+        </button>
+        <button class="social-btn facebook">
+          <span>📘 Facebook</span>
+        </button>
+      </div>
+
+      <div class="auth-footer">
+        <p>Ще не маєте акаунту? <a href="register.html">Зареєструватись</a></p>
+      </div>
+    </div>
+
+    <div class="auth-decoration">
+      <div class="decoration-circle circle-1"></div>
+      <div class="decoration-circle circle-2"></div>
+      <div class="decoration-circle circle-3"></div>
+    </div>
+  </div>
+</main>
+
+<script src="script/auth.js"></script>
+
+</body>
+</html>
