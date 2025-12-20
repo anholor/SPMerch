@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Кошик - SPMerch</title>
-  <link rel="stylesheet" href="style/cart.css">
+  <title>Улюблене - SPMerch</title>
+  <link rel="stylesheet" href="style/favorites.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
@@ -16,7 +16,7 @@
       <li><a href="index.html">Головна</a></li>
       <li><a href="shop.html">Магазин</a></li>
       <li><a href="index.html#about">Про нас</a></li>
-      <li><a href="contacts.html">Контакти</a></li>
+      <li><a href="contacts.html">Контакти</a></li> 
     </ul>
     <div class="nav-icons">
       <div class="cart-wrapper">
@@ -32,67 +32,34 @@
   </nav>
 </header>
 
-<main class="cart-main">
-  <div class="cart-header">
-    <h1 class="cart-title">ВАШ КОШИК</h1>
-    <p class="cart-subtitle">Перегляньте та оформіть ваше замовлення</p>
+<main class="favorites-main">
+  <div class="favorites-header">
+    <h1 class="favorites-title">УЛЮБЛЕНЕ</h1>
+    <p class="favorites-subtitle">Ваша колекція обраних товарів</p>
   </div>
 
-  <div class="cart-container">
-    <div class="cart-items" id="cartItems"></div>
-
-    <div class="cart-summary">
-      <div class="summary-card">
-        <h2>ПІДСУМОК</h2>
-        
-        <div class="summary-row">
-          <span>Товарів:</span>
-          <span id="totalItems">0</span>
-        </div>
-        
-        <div class="summary-row">
-          <span>Вартість товарів:</span>
-          <span id="subtotal">0 ₴</span>
-        </div>
-        
-        <div class="summary-row">
-          <span>Доставка:</span>
-          <span id="shipping">Безкоштовно</span>
-        </div>
-        
-        <div class="summary-divider"></div>
-        
-        <div class="summary-row total">
-          <span>РАЗОМ:</span>
-          <span id="total">0 ₴</span>
-        </div>
-
-        <button class="checkout-btn" onclick="checkout()">
-          <span>ОФОРМИТИ ЗАМОВЛЕННЯ</span>
-        </button>
-
-        <button class="continue-btn" onclick="window.location.href='shop.html'">
-          <span>ПРОДОВЖИТИ ПОКУПКИ</span>
-        </button>
+  <div class="favorites-container">
+    <div class="favorites-toolbar">
+      <div class="favorites-count-display">
+        <span>Товарів у списку: <strong id="totalFavorites">0</strong></span>
       </div>
-
-      <div class="promo-card">
-        <h3>ПРОМОКОД</h3>
-        <div class="promo-input-wrapper">
-          <input type="text" id="promoCode" placeholder="Введіть промокод">
-          <button onclick="applyPromo()"><span>ЗАСТОСУВАТИ</span></button>
-        </div>
-      </div>
+      <button class="clear-all-btn" onclick="clearAllFavorites()">
+        <span>ОЧИСТИТИ ВСЕ</span>
+      </button>
     </div>
-  </div>
 
-  <div class="empty-cart" id="emptyCart" style="display:none;">
-    <div class="empty-icon"><img src="images/icons/carIcn2.png" alt=""></div>
-    <h2>ВАШ КОШИК ПОРОЖНІЙ</h2>
-    <p>Додайте товари, щоб продовжити покупки</p>
-    <button class="shop-btn" onclick="window.location.href='shop.html'">
-      <span>ПЕРЕЙТИ ДО МАГАЗИНУ</span>
-    </button>
+    <div class="favorites-grid" id="favoritesGrid"></div>
+
+    <div class="empty-favorites" id="emptyFavorites" style="display:none;">
+      <div class="empty-icon">
+        <img src="images/icons/fav.png" alt="Empty favorites">
+      </div>
+      <h2>ВАШ СПИСОК УЛЮБЛЕНОГО ПОРОЖНІЙ</h2>
+      <p>Додайте товари, які вам сподобались, щоб не загубити їх</p>
+      <button class="shop-btn" onclick="window.location.href='shop.html'">
+        <span>ПЕРЕЙТИ ДО МАГАЗИНУ</span>
+      </button>
+    </div>
   </div>
 </main>
 
@@ -142,7 +109,7 @@
   </div>
 </footer>
 
-<script src="script/cart.js"></script>
+<script src="script/favorites.js"></script>
 
 </body>
 </html>

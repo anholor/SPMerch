@@ -49,6 +49,15 @@ document.querySelectorAll('button, .nav-icons span, .logo, nav li, .cart-item, .
   el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
 });
 
+
+function updateFavCount() {
+  const countEl = document.getElementById('favCount');
+  if (!countEl) return;
+
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  countEl.innerText = favorites.length;
+}
+
 /* ФУНКЦІЇ КОШИКА */
 function getCart() {
   return JSON.parse(localStorage.getItem('cart')) || [];
@@ -223,6 +232,7 @@ function checkout() {
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   renderCart();
+  updateFavCount();
 });
 
 /* ІКОНКА КОШИКА - ПЕРЕХІД НА СТОРІНКУ */

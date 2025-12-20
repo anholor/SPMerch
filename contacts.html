@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакти - SPMerch</title>
+  <link rel="stylesheet" href="style/contacts.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<div class="cursor" id="cursor"></div>
+<header>
+  <nav id="nav">
+    <div class="logo">SPMerch</div>
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="shop.html">Магазин</a></li>
+      <li><a href="favorites.html">Улюблене</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
+    </ul>
+    <div class="nav-icons">
+      <div class="cart-wrapper">
+        <a class="icon cart" id="cartIcon" href="cart.html"></a>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <div class="cart-wrapper">
+        <a class="icon favorites" id="favIcon" href="favorites.html"></a>
+        <span class="cart-count" id="favCount">0</span>
+      </div>
+      <a class="icon user" href="profile.html"></a>
+    </div>
+  </nav>
+</header>
+
+<main class="contacts-main">
+  <div class="contacts-header">
+    <h1 class="contacts-title">ЗВ'ЯЖІТЬСЯ З НАМИ</h1>
+    <p class="contacts-subtitle">Ми завжди раді допомогти вам</p>
+  </div>
+
+  <div class="contacts-container">
+    <div class="contact-info-grid">
+      <div class="contact-card">
+        <div class="contact-icon">
+          <img src="images/icons/phoneIcn.png" alt="Phone">
+        </div>
+        <h3>ТЕЛЕФОН</h3>
+        <p>+380 (XX) XXX-XX-XX</p>
+        <p class="contact-note">Пн-Пт: 9:00 - 18:00</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">
+          <img src="images/icons/emailIcn.png" alt="Email">
+        </div>
+        <h3>EMAIL</h3>
+        <p>support@spmerch.ua</p>
+        <p class="contact-note">Відповідаємо протягом 24 годин</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">
+          <img src="images/icons/locationIcn.png" alt="Location">
+        </div>
+        <h3>АДРЕСА</h3>
+        <p>Івано-Франківськ</p>
+        <p class="contact-note">Україна</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">
+          <img src="images/icons/clockIcn.png" alt="Hours">
+        </div>
+        <h3>ГРАФІК РОБОТИ</h3>
+        <p>Пн-Пт: 9:00 - 18:00</p>
+        <p class="contact-note">Сб-Нд: Вихідні</p>
+      </div>
+    </div>
+
+    <div class="contact-form-section">
+      <h2>НАПИШІТЬ НАМ</h2>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>ІМ'Я</label>
+            <input type="text" id="name" placeholder="Ваше ім'я" required>
+          </div>
+          <div class="form-group">
+            <label>EMAIL</label>
+            <input type="email" id="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>ТЕЛЕФОН</label>
+          <input type="tel" id="phone" placeholder="+380 XX XXX XX XX">
+        </div>
+
+        <div class="form-group">
+          <label>ТЕМА</label>
+          <select id="subject" required>
+            <option value="">Оберіть тему</option>
+            <option value="order">Питання по замовленню</option>
+            <option value="product">Інформація про товар</option>
+            <option value="delivery">Доставка</option>
+            <option value="return">Повернення</option>
+            <option value="other">Інше</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>ПОВІДОМЛЕННЯ</label>
+          <textarea id="message" rows="6" placeholder="Ваше повідомлення..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <span>ВІДПРАВИТИ ПОВІДОМЛЕННЯ</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="social-section">
+      <h2>МИ В СОЦІАЛЬНИХ МЕРЕЖАХ</h2>
+      <div class="social-grid">
+        <a href="#" class="social-card">
+          <img src="images/icons/Facebook.png" alt="Facebook">
+          <span>FACEBOOK</span>
+        </a>
+        <a href="#" class="social-card">
+          <img src="images/icons/instalogo.png" alt="Instagram">
+          <span>INSTAGRAM</span>
+        </a>
+        <a href="#" class="social-card">
+          <img src="images/icons/youtubelogo.png" alt="YouTube">
+          <span>YOUTUBE</span>
+        </a>
+        <a href="#" class="social-card">
+          <img src="images/icons/tiktoklogo.png" alt="TikTok">
+          <span>TIKTOK</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>ДОПОМОГА</h3>
+      <ul>
+        <li><a href="#">Доставка та оплата</a></li>
+        <li><a href="#">Повернення товару</a></li>
+        <li><a href="#">Гарантія</a></li>
+        <li><a href="#">Часті питання</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>КОНТАКТИ</h3>
+      <ul>
+        <li>support@spmerch.ua</li>
+        <li>+380 (XX) XXX-XX-XX</li>
+        <li>Пн-Пт: 9:00 - 18:00</li>
+        <li>Івано-Франківськ, Україна</li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>СОЦІАЛЬНІ МЕРЕЖІ</h3>
+      <div class="socials">
+        <a href="#" class="social">
+          <img src="images/icons/Facebook.png" alt="Facebook">
+        </a>
+        <a href="#" class="social">
+          <img src="images/icons/instalogo.png" alt="Instagram">
+        </a>
+        <a href="#" class="social">
+          <img src="images/icons/youtubelogo.png" alt="YouTube">
+        </a>
+        <a href="#" class="social">
+          <img src="images/icons/tiktoklogo.png" alt="TikTok">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Головатчук Андрій Іванович</p>
+  </div>
+</footer>
+
+<script src="script/contacts.js"></script>
+
+</body>
+</html>

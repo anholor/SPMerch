@@ -33,7 +33,7 @@ if (cursor) {
   });
 }
 
-/* КОШИК - ЛІЧИЛЬНИК */
+/* ЛІЧИЛЬНИК */
 function updateCartCount() {
   const countEl = document.getElementById('cartCount');
   if (!countEl) return;
@@ -41,6 +41,14 @@ function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const total = cart.reduce((sum, item) => sum + item.qty, 0);
   countEl.innerText = total;
+}
+
+function updateFavCount() {
+  const countEl = document.getElementById('favCount');
+  if (!countEl) return;
+
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  countEl.innerText = favorites.length;
 }
 
 /* ПЕРЕВІРКА АВТОРИЗАЦІЇ */
@@ -264,33 +272,6 @@ if (logoutBtn) {
   });
 }
 
-/* ВИПАДАЮЧИЙ СПИСОК */
-function updateUserDropdown() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser'));
-  const logoutBtn = document.getElementById('logoutBtn');
-
-  if (currentUser && logoutBtn) {
-    logoutBtn.style.display = 'flex';
-  }
-}
-
-/* ПЕРЕМИКАЧ ТЕМИ */
-function initThemeToggle() {
-  const themeCheckbox = document.getElementById('themeCheckbox');
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  
-  if (themeCheckbox) {
-    themeCheckbox.checked = savedTheme === 'dark';
-    
-    themeCheckbox.addEventListener('change', () => {
-      const newTheme = themeCheckbox.checked ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    });
-  }
-}
 
 /* АВАТАР */
 const avatarUpload = document.getElementById('avatarUpload');
@@ -321,6 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
   checkAuth();
   loadProfile();
   updateCartCount();
-  updateUserDropdown();
+  updateFavCount();
   initThemeToggle();
 });

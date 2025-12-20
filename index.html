@@ -8,10 +8,8 @@
   <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-
 <div class="progress-bar" id="progressBar"></div>
 <div class="cursor" id="cursor"></div>
-
 <header>
   <nav id="nav">
     <div class="logo">SPMerch</div>
@@ -19,12 +17,16 @@
       <li><a href="index.html">Головна</a></li>
       <li><a href="shop.html">Магазин</a></li>
       <li><a href="index.html#about">Про нас</a></li>
-      <li><a href="index.html#contacts">Контакти</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
     </ul>
     <div class="nav-icons">
       <div class="cart-wrapper">
         <a class="icon cart" id="cartIcon" href="cart.html"></a>
         <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <div class="cart-wrapper">
+        <a class="icon favorites" id="favIcon" href="favorites.html"></a>
+        <span class="cart-count" id="favCount">0</span>
       </div>
       <a class="icon user" href="profile.html"></a>
     </div>
@@ -55,7 +57,6 @@
         <h3>Silent Planet Hoodie</h3>
         <div class="price">1200 ₴</div>
         <div class="buttons">
-          <button><span>Переглянути</span></button>
           <button class="icon-btn favIc" onclick="animateBtn(this)"></button>
           <button class="icon-btn cartIc" onclick="animateBtn(this)"></button>
         </div>
@@ -66,7 +67,6 @@
         <h3>Tour T-Shirt</h3>
         <div class="price">900 ₴</div>
         <div class="buttons">
-          <button><span>Переглянути</span></button>
           <button class="icon-btn favIc" onclick="animateBtn(this)"></button>
           <button class="icon-btn cartIc" onclick="animateBtn(this)"></button>
         </div>
@@ -77,7 +77,6 @@
         <h3>Limited Vinyl</h3>
         <div class="price">1500 ₴</div>
         <div class="buttons">
-          <button><span>Переглянути</span></button>
           <button class="icon-btn favIc" onclick="animateBtn(this)"></button>
           <button class="icon-btn cartIc" onclick="animateBtn(this)"></button>
         </div>
@@ -126,5 +125,6 @@
 </footer>
 
   <script src="script/script.js"></script>
+
 </body>
 </html>

@@ -7,10 +7,8 @@
   <link rel="stylesheet" href="style/profile.css">
 </head>
 <body>
-
 <div class="progress-bar" id="progressBar"></div>
 <div class="cursor" id="cursor"></div>
-
 <header>
   <nav id="nav">
     <div class="logo">SPMerch</div>
@@ -18,17 +16,20 @@
       <li><a href="index.html">Головна</a></li>
       <li><a href="shop.html">Магазин</a></li>
       <li><a href="index.html#about">Про нас</a></li>
-      <li><a href="index.html#contacts">Контакти</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
     </ul>
     <div class="nav-icons">
       <div class="cart-wrapper">
         <a class="icon cart" id="cartIcon" href="cart.html"></a>
         <span class="cart-count" id="cartCount">0</span>
       </div>
+      <div class="cart-wrapper">
+        <a class="icon favorites" id="favIcon" href="favorites.html"></a>
+        <span class="cart-count" id="favCount">0</span>
+      </div>
       <a class="icon user" href="profile.html"></a>
     </div>
   </nav>
-
 </header>
 
 <main class="profile-main">
@@ -43,7 +44,10 @@
         <div class="profile-avatar">
           <img src="images/default-avatar.png" alt="Avatar" id="avatarImg">
           <div class="avatar-overlay">
-            <label for="avatarUpload" class="avatar-upload-btn">📷</label>
+            <label for="avatarUpload" class="avatar-upload-btn">
+
+              <img src="images/icons/cameraIcn.png" alt="Upload" style="width:32px;height:32px;">
+            </label>
             <input type="file" id="avatarUpload" accept="image/*" style="display:none;">
           </div>
         </div>
@@ -63,26 +67,37 @@
 
       <nav class="profile-menu">
         <a href="#personal" class="menu-item active" data-tab="personal">
-          <span class="menu-icon">👤</span>
+          <span class="menu-icon">
+            <!-- Іконка користувача -->
+            <img src="images/icons/user-icon.png" alt="User">
+          </span>
           <span>Особисті дані</span>
         </a>
         <a href="#orders" class="menu-item" data-tab="orders">
-          <span class="menu-icon">📦</span>
+          <span class="menu-icon">
+            <!-- Іконка замовлень -->
+            <img src="images/icons/orders-icon.png" alt="Orders">
+          </span>
           <span>Мої замовлення</span>
         </a>
         <a href="#addresses" class="menu-item" data-tab="addresses">
-          <span class="menu-icon">📍</span>
+          <span class="menu-icon">
+            <!-- Іконка адреси -->
+            <img src="images/icons/address-icon.png" alt="Address">
+          </span>
           <span>Адреси</span>
         </a>
         <a href="#security" class="menu-item" data-tab="security">
-          <span class="menu-icon">🔒</span>
+          <span class="menu-icon">
+            <!-- Іконка безпеки -->
+            <img src="images/icons/security-icon.png" alt="Security">
+          </span>
           <span>Безпека</span>
         </a>
       </nav>
     </aside>
 
     <div class="profile-content">
-      <!-- ОСОБИСТІ ДАНІ -->
       <section class="content-section active" id="personal">
         <h2 class="section-title">ОСОБИСТІ ДАНІ</h2>
         <form class="profile-form" id="personalForm">
@@ -122,13 +137,13 @@
           </div>
         </form>
       </section>
-
-      <!-- МОЇ ЗАМОВЛЕННЯ -->
       <section class="content-section" id="orders">
         <h2 class="section-title">МОЇ ЗАМОВЛЕННЯ</h2>
         <div class="orders-list" id="ordersList">
           <div class="empty-state">
-            <div class="empty-icon">📦</div>
+            <div class="empty-icon">
+              <img src="images/icons/carIcn2.png" alt="Package">
+            </div>
             <h3>У вас ще немає замовлень</h3>
             <p>Перейдіть до магазину та зробіть своє перше замовлення</p>
             <button class="shop-btn" onclick="window.location.href='shop.html'">
@@ -137,8 +152,6 @@
           </div>
         </div>
       </section>
-
-      <!-- АДРЕСИ -->
       <section class="content-section" id="addresses">
         <h2 class="section-title">АДРЕСИ ДОСТАВКИ</h2>
         <div class="addresses-grid" id="addressesList">
@@ -147,8 +160,6 @@
             <p>Додати нову адресу</p>
           </div>
         </div>
-
-        <!-- Форма додавання адреси -->
         <div class="address-form" id="addressForm" style="display:none;">
           <h3>НОВА АДРЕСА</h3>
           <form id="newAddressForm">
@@ -185,8 +196,6 @@
           </form>
         </div>
       </section>
-
-      <!-- БЕЗПЕКА -->
       <section class="content-section" id="security">
         <h2 class="section-title">БЕЗПЕКА АКАУНТУ</h2>
         <form class="profile-form" id="securityForm">
@@ -206,7 +215,7 @@
           </div>
 
           <div class="password-requirements">
-            <p>Вимоги до пароля:</p>
+            <p>Вимоги до паролю:</p>
             <ul>
               <li>Мінімум 8 символів</li>
               <li>Принаймні одна велика літера</li>
@@ -249,10 +258,10 @@
     <div class="footer-section">
       <h3>КОНТАКТИ</h3>
       <ul>
-        <li>📧 support@spmerch.ua</li>
-        <li>📞 +380 (XX) XXX-XX-XX</li>
-        <li>🕐 Пн-Пт: 9:00 - 18:00</li>
-        <li>📍 Івано-Франківськ, Україна</li>
+        <li>support@spmerch.ua</li>
+        <li>+380 (XX) XXX-XX-XX</li>
+        <li>Пн-Пт: 9:00 - 18:00</li>
+        <li>Івано-Франківськ, Україна</li>
       </ul>
     </div>
 

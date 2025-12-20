@@ -170,37 +170,6 @@ if (loginForm) {
   });
 }
 
-/* ВИПАДАЮЧИЙ СПИСОК КОРИСТУВАЧА */
-function updateUserDropdown() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser'));
-  const logoutBtn = document.getElementById('logoutBtn');
-  const userDropdown = document.getElementById('userDropdown');
-
-  if (!userDropdown) return;
-
-  if (currentUser) {
-    if (logoutBtn) logoutBtn.style.display = 'flex';
-    
-    const loginItem = userDropdown.querySelector('a[href="login.html"]');
-    const registerItem = userDropdown.querySelector('a[href="register.html"]');
-    
-    if (loginItem) loginItem.style.display = 'none';
-    if (registerItem) registerItem.style.display = 'none';
-    
-    if (!userDropdown.querySelector('.user-info')) {
-      const userInfo = document.createElement('div');
-      userInfo.className = 'dropdown-item user-info';
-      userInfo.style.cursor = 'default';
-      userInfo.style.pointerEvents = 'none';
-      userInfo.innerHTML = `
-        <span class="dropdown-icon">👤</span>
-        <span>${currentUser.firstName} ${currentUser.lastName}</span>
-      `;
-      userDropdown.insertBefore(userInfo, userDropdown.firstChild);
-    }
-  }
-}
-
 /* ВИХІД */
 const logoutBtn = document.getElementById('logoutBtn');
 if (logoutBtn) {
@@ -214,26 +183,3 @@ if (logoutBtn) {
     window.location.href = 'index.html';
   });
 }
-
-/* ПЕРЕМИКАЧ ТЕМИ */
-function initThemeToggle() {
-  const themeCheckbox = document.getElementById('themeCheckbox');
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  
-  if (themeCheckbox) {
-    themeCheckbox.checked = savedTheme === 'dark';
-    
-    themeCheckbox.addEventListener('change', () => {
-      const newTheme = themeCheckbox.checked ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    });
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  updateUserDropdown();
-  initThemeToggle();
-});

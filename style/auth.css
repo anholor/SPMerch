@@ -6,14 +6,6 @@
   --accent:#ffffff;
 }
 
-[data-theme="light"] {
-  --black:#f5f5f5;
-  --white:#000;
-  --gray:#555;
-  --dark:#ffffff;
-  --accent:#000000;
-}
-
 *{
   margin:0;
   padding:0;
@@ -35,7 +27,7 @@ body{
 
 a{color:inherit;text-decoration:none; cursor:none;}
 
-/* ====== ХЕДЕР ====== */
+                                                        /* ХЕДЕР */
 header{
   position:fixed;
   top:0;
@@ -55,11 +47,6 @@ nav{
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
   transition: background 0.3s ease;
-}
-
-[data-theme="light"] nav{
-  background:rgba(255,255,255,0.95);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 .logo{
@@ -157,7 +144,11 @@ nav li:hover::after{width:100%;}
   background-image: url("../images/icons/profileIcn.png");
 }
 
-/* ====== КУРСОР ====== */
+.favorites {
+  background-image: url("../images/icons/fav.png");
+}
+
+                                                      /* КУРСОР */
 .cursor{
   position:fixed;
   top:0; left:0;
@@ -178,7 +169,7 @@ nav li:hover::after{width:100%;}
   border-width:3px;
 }
 
-/* ====== ОСНОВНИЙ КОНТЕНТ ====== */
+                                                /* ОСНОВНИЙ КОНТЕНТ */
 .auth-main{
   min-height:calc(100vh - 70px);
   display:flex;
@@ -200,7 +191,7 @@ nav li:hover::after{width:100%;}
   to{opacity:1; transform:translateY(0);}
 }
 
-/* ====== ДЕКОРАЦІЇ ====== */
+                                                    /* ДЕКОРАЦІЇ */
 .auth-decoration{
   position:fixed;
   top:0;
@@ -249,7 +240,7 @@ nav li:hover::after{width:100%;}
   66%{transform:translate(-30px, 30px) scale(0.9);}
 }
 
-/* ====== ФОРМА ====== */
+                                                        /* ФОРМА */
 .auth-box{
   background:rgba(8, 8, 8, 0.95);
   border:1px solid rgba(255,255,255,0.1);
@@ -259,11 +250,6 @@ nav li:hover::after{width:100%;}
   backdrop-filter:blur(10px);
   position:relative;
   overflow:hidden;
-}
-
-[data-theme="light"] .auth-box{
-  background:rgba(255, 255, 255, 0.95);
-  border-color:rgba(0,0,0,0.1);
 }
 
 .auth-box::before{
@@ -299,7 +285,7 @@ nav li:hover::after{width:100%;}
   font-size:14px;
 }
 
-/* ====== ПОЛЯ ФОРМИ ====== */
+                                                    /* ПОЛЯ ФОРМИ */
 .auth-form{
   display:flex;
   flex-direction:column;
@@ -335,22 +321,11 @@ nav li:hover::after{width:100%;}
   transition:all 0.3s ease;
 }
 
-[data-theme="light"] .form-group input{
-  background:rgba(0,0,0,0.05);
-  border-color:rgba(0,0,0,0.2);
-  color:var(--white);
-}
-
 .form-group input:focus{
   outline:none;
   border-color:var(--white);
   background:rgba(0,0,0,0.5);
   box-shadow:0 0 20px rgba(255,255,255,0.1);
-}
-
-[data-theme="light"] .form-group input:focus{
-  background:rgba(0,0,0,0.1);
-  box-shadow:0 0 20px rgba(0,0,0,0.1);
 }
 
 .password-toggle{
@@ -369,7 +344,7 @@ nav li:hover::after{width:100%;}
   transform:scale(1.2);
 }
 
-/* ====== ОПЦІЇ ФОРМИ ====== */
+                                                        /* ОПЦІЇ ФОРМИ */
 .form-options{
   display:flex;
   justify-content:space-between;
@@ -412,7 +387,7 @@ nav li:hover::after{width:100%;}
   text-decoration:underline;
 }
 
-/* ====== КНОПКИ ====== */
+                                                          /* КНОПКИ */
 .auth-btn{
   width:100%;
   background:transparent;
@@ -453,7 +428,7 @@ nav li:hover::after{width:100%;}
   z-index:1;
 }
 
-/* ====== РОЗДІЛЬНИК ====== */
+                                                    /* РОЗДІЛЬНИК */
 .auth-divider{
   position:relative;
   text-align:center;
@@ -479,11 +454,8 @@ nav li:hover::after{width:100%;}
   color:var(--gray);
 }
 
-[data-theme="light"] .auth-divider span{
-  background:rgba(255, 255, 255, 0.95);
-}
 
-/* ====== СОЦІАЛЬНИЙ ВХІД ====== */
+                                                      /* СОЦІАЛЬНИЙ ВХІД */
 .social-login{
   display:flex;
   gap:15px;
@@ -507,7 +479,7 @@ nav li:hover::after{width:100%;}
   transform:translateY(-2px);
 }
 
-/* ====== ФУТЕР ФОРМИ ====== */
+                                                        /* ФУТЕР ФОРМИ */
 .auth-footer{
   text-align:center;
   margin-top:30px;
@@ -528,7 +500,7 @@ nav li:hover::after{width:100%;}
   letter-spacing:1px;
 }
 
-/* ====== СИЛА ПАРОЛЯ ====== */
+                                                        /* СИЛА ПАРОЛЯ */
 .password-strength{
   margin-top:-10px;
 }
@@ -558,7 +530,7 @@ nav li:hover::after{width:100%;}
   letter-spacing:1px;
 }
 
-/* ====== АДАПТИВНІСТЬ ====== */
+                                                        /* АДАПТИВНІСТЬ */
 @media (max-width: 768px) {
   .auth-box{
     padding:30px 20px;
@@ -586,9 +558,5 @@ nav li:hover::after{width:100%;}
 
   nav li{
     font-size:12px;
-  }
-
-  .user-dropdown{
-    right:-20px;
   }
 }

@@ -146,6 +146,10 @@ nav li:hover::after{width:100%;}
   background-image: url("../images/icons/profileIcn.png");
 }
 
+.favorites {
+  background-image: url("../images/icons/fav.png");
+}
+
 .nav-icons a{
   cursor:none;
   transition: all 0.3s ease;
@@ -232,7 +236,7 @@ section{
   position:relative;
 }
 
-                                                           /*  ПІСНІ  */
+                                                          /*  ПІСНІ  */
 .covers{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -1004,7 +1008,7 @@ footer::before{
 
 
 
-                                              /*  ВІКОНЕЧКИ МОДАЛ  */
+                                              /*  ВІКОНЕЧКИv МОДАЛ  */
 .modal{
   display:none;
   position:fixed;
@@ -1026,7 +1030,7 @@ footer::before{
 
 .modal-content{
   background:#0a0a0a;
-  max-width:900px;
+  max-width:1000px;
   width:90%;
   max-height:90vh;
   overflow-y:auto;
@@ -1079,8 +1083,14 @@ footer::before{
 .modal-body{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:40px;
+  gap:50px;
   padding:60px 40px 40px;
+}
+
+.modal-left{
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .modal-image{
@@ -1088,32 +1098,108 @@ footer::before{
   height:auto;
   border-radius:4px;
   filter:grayscale(0.2);
+  transition:all 0.4s ease;
 }
 
-.modal-info h2{
+.modal-image:hover{
+  filter:grayscale(0);
+  transform:scale(1.02);
+}
+
+.modal-right{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.modal-right h2{
   font-size:32px;
   letter-spacing:4px;
-  margin-bottom:15px;
 }
 
 .modal-category{
-  color:var(--gray);
+  color:#aaa;
   font-size:13px;
   letter-spacing:2px;
-  margin-bottom:20px;
 }
 
 .modal-price{
   font-size:36px;
-  margin:20px 0;
   color:#fff;
+  font-weight:bold;
 }
 
 .modal-description{
-  color:var(--gray);
+  color:#aaa;
   line-height:1.8;
-  margin:20px 0;
   font-size:14px;
+}
+
+/* СІТКА РОЗМІРІВ */
+.size-selector{
+  margin:25px 0;
+  padding:25px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.size-selector h4{
+  margin-bottom:15px;
+  letter-spacing:2px;
+  font-size:14px;
+}
+
+.size-grid{
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.size-btn{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.3);
+  color:#fff;
+  padding:15px;
+  cursor:none;
+  transition:all 0.4s ease;
+  font-size:16px;
+  font-weight:bold;
+  letter-spacing:2px;
+  position:relative;
+  overflow:hidden;
+}
+
+.size-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#fff;
+  transform:translateY(100%);
+  transition:0.3s ease;
+}
+
+.size-btn:hover::before,
+.size-btn.selected::before{
+  transform:translateY(0);
+}
+
+.size-btn:hover,
+.size-btn.selected{
+  color:#000;
+  border-color:#fff;
+}
+
+.size-btn span{
+  position:relative;
+  z-index:1;
+}
+
+.size-note{
+  font-size:11px;
+  color:#888;
+  letter-spacing:1px;
+  margin-top:10px;
 }
 
 .modal-features{
@@ -1128,7 +1214,7 @@ footer::before{
 
 .modal-features ul{
   list-style:none;
-  color:var(--gray);
+  color:#aaa;
 }
 
 .modal-features li{
@@ -1152,15 +1238,20 @@ footer::before{
 .modal-btn{
   flex:1;
   background:transparent;
-  border:1px solid #fff;
+  border:2px solid #fff;
   color:#fff;
-  padding:15px;
+  padding:18px 15px;
   cursor:none;
   transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position:relative;
   overflow:hidden;
   letter-spacing:2px;
-  font-size:14px;
+  font-size:13px;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
 }
 
 .modal-btn::before{
@@ -1178,6 +1269,8 @@ footer::before{
 
 .modal-btn:hover{
   color:#000;
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(255,255,255,0.3);
 }
 
 .modal-btn span{
@@ -1185,10 +1278,56 @@ footer::before{
   z-index:1;
 }
 
-.modal-btn.primary{
-  border:2px solid #fff;
+.btn-icon{
+  width:20px;
+  height:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
+.btn-icon img{
+  width:100%;
+  height:100%;
+  filter:brightness(0) invert(1);
+}
+
+.modal-btn:hover .btn-icon img{
+  filter:brightness(0);
+}
+
+.modal-btn.primary{
+  border-width:2px;
+}
+
+.modal-btn.favorite{
+  border-color:rgba(255,255,255,0.5);
+}
+
+/* АДАПТИВНІСТЬ */
+@media (max-width: 768px) {
+  .modal-body{
+    grid-template-columns:1fr;
+    padding:40px 20px 20px;
+    gap:30px;
+  }
+  
+  .size-grid{
+    grid-template-columns:repeat(3, 1fr);
+  }
+  
+  .modal-actions{
+    flex-direction:column;
+  }
+  
+  .modal-right h2{
+    font-size:24px;
+  }
+  
+  .modal-price{
+    font-size:28px;
+  }
+}
                                           /*  ВІДСУТНІСТЬ РЕЗУЛЬТАТІВ  */
 .no-results{
   text-align:center;
@@ -1198,7 +1337,3 @@ footer::before{
   letter-spacing:3px;
   display:none;
 }
-
-
-
-

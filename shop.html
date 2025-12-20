@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-
 <div class="progress-bar" id="progressBar"></div>
 <div class="cursor" id="cursor"></div>
   <nav id="nav">
@@ -16,12 +15,16 @@
       <li><a href="index.html">Головна</a></li>
       <li><a href="shop.html">Магазин</a></li>
       <li><a href="index.html#about">Про нас</a></li>
-      <li><a href="index.html#contacts">Контакти</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
     </ul>
     <div class="nav-icons">
       <div class="cart-wrapper">
         <a class="icon cart" id="cartIcon" href="cart.html"></a>
         <span class="cart-count" id="cartCount">0</span>
+      </div>
+    <div class="cart-wrapper">
+        <a class="icon favorites" id="favIcon" href="favorites.html"></a>
+        <span class="cart-count" id="favCount">0</span>
       </div>
       <a class="icon user" href="profile.html"></a>
     </div>
@@ -161,45 +164,75 @@
 </section>
 </div>
 </main>
+
 <div class="modal" id="productModal">
-    <div class="modal-content">
-        <div class="close-modal" id="closeModal">×</div>
+<div class="modal-content">
+    <div class="close-modal" id="closeModal">×</div>
 
-        <div class="modal-body">
+    <div class="modal-body">
+    <div class="modal-left">
         <img src="" alt="Product" class="modal-image" id="modalImage">
+    </div>
 
-        <div class="modal-info">
-            <h2 id="modalTitle"></h2>
-            <div class="modal-category" id="modalCategory"></div>
-            <div class="modal-price" id="modalPrice"></div>
+    <div class="modal-right">
+        <h2 id="modalTitle"></h2>
+        <div class="modal-category" id="modalCategory"></div>
+        <div class="modal-price" id="modalPrice"></div>
 
-            <p class="modal-description" id="modalDescription">
-            Офіційний мерч гурту Silent Planet. Висока якість матеріалів та обмежений тираж.
-            </p>
+        <p class="modal-description" id="modalDescription">
+        Офіційний мерч гурту Silent Planet. Висока якість матеріалів та обмежений тираж.
+        </p>
 
-            <div class="modal-features">
-            <h4>ОСОБЛИВОСТІ</h4>
-            <ul>
-                <li>Офіційний мерч</li>
-                <li>Висока якість</li>
-                <li>Обмежений тираж</li>
-            </ul>
-            </div>
-
-            <div class="modal-actions">
-            <button class="modal-btn primary" id="modalAddToCart" onclick="addToCartFromModal()">
-                <span>ДОДАТИ В КОШИК</span>
+        <div class="size-selector">
+        <h4>ОБЕРІТЬ РОЗМІР</h4>
+        <div class="size-grid">
+            <button class="size-btn" data-size="S">
+            <span>S</span>
             </button>
-            <button class="modal-btn" onclick="addToFavoritesFromModal()">
-                <span>В УЛЮБЛЕНЕ</span>
+            <button class="size-btn" data-size="M">
+            <span>M</span>
             </button>
-            </div>
+            <button class="size-btn" data-size="L">
+            <span>L</span>
+            </button>
+            <button class="size-btn" data-size="XL">
+            <span>XL</span>
+            </button>
+            <button class="size-btn" data-size="XXL">
+            <span>XXL</span>
+            </button>
         </div>
+        <p class="size-note">* Оберіть розмір перед додаванням до кошика</p>
+        </div>
+
+        <div class="modal-features">
+        <h4>ОСОБЛИВОСТІ</h4>
+        <ul>
+            <li>Офіційний мерч</li>
+            <li>Висока якість</li>
+            <li>Обмежений тираж</li>
+        </ul>
+        </div>
+
+        <div class="modal-actions">
+        <button class="modal-btn primary" id="modalAddToCart" onclick="addToCartFromModal()">
+            <span class="btn-icon">
+            <img src="images/icons/cartIcn.png" alt="">
+            </span>
+            <span>ДОДАТИ В КОШИК</span>
+        </button>
+        <button class="modal-btn favorite" id="modalAddToFav" onclick="addToFavoritesFromModal()">
+            <span class="btn-icon">
+            <img src="images/icons/fav.png" alt="">
+            </span>
+            <span>В УЛЮБЛЕНЕ</span>
+        </button>
         </div>
     </div>
+    </div>
+</div>
 </div>
 
-  <script src="script/script.js">
-
-</script>
+  <script src="script/script.js"></script>
+  
 </body>
