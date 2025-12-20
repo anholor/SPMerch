@@ -131,7 +131,6 @@ function renderCart() {
 
   updateSummary();
   
-  // Додаємо курсор ефект для нових елементів
   document.querySelectorAll('.cart-item').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('active'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
@@ -159,7 +158,6 @@ function removeItem(id) {
   cart = cart.filter(item => item.id !== id);
   saveCart(cart);
   
-  // Анімація видалення
   const itemEl = document.querySelector(`.cart-item[data-id="${id}"]`);
   if (itemEl) {
     itemEl.style.opacity = '0';
@@ -192,8 +190,8 @@ function applyPromo() {
   if (!promoInput || !promoInput.value) return;
 
   const code = promoInput.value.toUpperCase();
-  
-  // Приклад промокодів
+
+//ПРОМОКОДИ
   const validCodes = {
     'SILENT10': 10,
     'MERCH15': 15,
@@ -203,7 +201,6 @@ function applyPromo() {
   if (validCodes[code]) {
     alert(`Промокод застосовано! Знижка: ${validCodes[code]}%`);
     promoInput.value = '';
-    // Тут можна додати логіку застосування знижки
   } else {
     alert('Невірний промокод');
     promoInput.value = '';
@@ -222,13 +219,11 @@ function checkout() {
   
   alert(`Дякуємо за замовлення!\nЗагальна сума: ${total} ₴\n\nНаша команда зв'яжеться з вами найближчим часом.`);
   
-  // Очищення кошика після замовлення
   localStorage.removeItem('cart');
   renderCart();
   updateCartCount();
 }
 
-/* ІНІЦІАЛІЗАЦІЯ */
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   renderCart();

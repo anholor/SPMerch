@@ -297,7 +297,7 @@ if (avatarUpload) {
   });
 }
 
-/* ІНІЦІАЛІЗАЦІЯ */
+
 document.addEventListener('DOMContentLoaded', () => {
   checkAuth();
   loadProfile();

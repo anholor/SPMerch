@@ -90,7 +90,7 @@ function renderFavorites() {
       
       <div class="favorite-info">
         <p class="favorite-category">МЕРЧ</p>
-        <h3 class="favorite-name">${item.title}</h3>
+        <h3 class="favorite-name">${item.name}</h3>
         <p class="favorite-price">${item.price}</p>
         
         <div class="favorite-actions">
@@ -131,7 +131,6 @@ function addToCartFromFav(id) {
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
   
-  // Анімація іконки кошика
   const cartIcon = document.getElementById('cartIcon');
   if (cartIcon) {
     cartIcon.classList.add('added');
@@ -146,7 +145,6 @@ function removeFromFavorites(id) {
   favorites = favorites.filter(item => item.id !== id);
   saveFavorites(favorites);
   
-  // Анімація видалення
   const itemEl = document.querySelector(`.favorite-card[data-id="${id}"]`);
   if (itemEl) {
     itemEl.style.opacity = '0';

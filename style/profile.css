@@ -332,6 +332,7 @@ nav li:hover::after{width:100%;}
   background:rgba(8, 8, 8, 0.95);
   border:1px solid rgba(255,255,255,0.1);
   padding:10px 0;
+  height: fit-content;
 }
 
 .menu-item{
@@ -358,12 +359,6 @@ nav li:hover::after{width:100%;}
 .menu-item.active{
   background:rgba(255,255,255,0.1);
   border-left-color:var(--white);
-}
-
-.menu-icon{
-  font-size:20px;
-  width:24px;
-  flex-shrink:0;
 }
 
                                                     /* КОНТЕНТ ПРОФІЛЮ */
@@ -489,7 +484,7 @@ nav li:hover::after{width:100%;}
   background:#ff4444;
 }
 
-/* ЗАМОВЛЕННЯ */
+                                                                      /* ЗАМОВЛЕННЯ */
 .orders-list{
   display:flex;
   flex-direction:column;

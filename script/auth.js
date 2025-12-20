@@ -21,7 +21,7 @@ if (cursor) {
   });
 }
 
-/* КОШИК - ЛІЧИЛЬНИК */
+/* ЛІЧИЛЬНИК */
 function updateCartCount() {
   const countEl = document.getElementById('cartCount');
   if (!countEl) return;

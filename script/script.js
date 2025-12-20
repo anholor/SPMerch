@@ -133,14 +133,20 @@ function addProductToCart(product) {
 }
 
 /*ДОДАВАННЯ В УЛЮБЛЕНЕ*/
-function addToFavorites(product) {
-  let favorites = getFavorites();
+function addToFavorites(button) {
+  const card = button.closest('.product-card');
 
-  const existing = favorites.find(item => item.id === product.id);
-  if (existing) {
-    alert('Цей товар вже у вашому списку улюбленого!');
-    return;
-  }
+  const product = {
+    id: card.dataset.id,
+    name: card.querySelector('.product-name')?.innerText || '',
+    price: card.querySelector('.product-price')?.innerText || '',
+    image: card.querySelector('.product-image')?.src || '',
+    category: card.querySelector('.product-category')?.innerText || ''
+  };
+
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+  if (favorites.some(item => item.id === product.id)) return;
 
   favorites.push(product);
   saveFavorites(favorites);
@@ -202,7 +208,6 @@ function animateBtn(btn) {
   btn.classList.add('added');
   setTimeout(() => btn.classList.remove('added'), 400);
   
-  // Визначити тип кнопки і виконати відповідну дію
   if (btn.classList.contains('cartIc')) {
     handleAddToCart(btn);
   } else if (btn.classList.contains('favIc')) {
@@ -216,25 +221,20 @@ document.addEventListener('DOMContentLoaded', () => {
   updateFavCount();
 });
 
-// Обрана величина
 let selectedSize = null;
 let currentProduct = null;
 
-// Обробник вибору розміру
 document.addEventListener('click', (e) => {
   if (e.target.closest('.size-btn')) {
     const btn = e.target.closest('.size-btn');
     
-    // Зняти виділення з усіх
     document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
     
-    // Виділити обраний
     btn.classList.add('selected');
     selectedSize = btn.dataset.size;
   }
 });
 
-// Відкриття модалу
 document.querySelectorAll('.product-card .view-btn').forEach(btn => {
   btn.addEventListener('click', e => {
     e.preventDefault();
@@ -260,13 +260,11 @@ document.querySelectorAll('.product-card .view-btn').forEach(btn => {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
     
-    // Скинути вибір розміру
     selectedSize = null;
     document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
   });
 });
 
-// Закриття модалу
 document.getElementById('closeModal')?.addEventListener('click', closeModal);
 document.getElementById('productModal')?.addEventListener('click', e => {
   if (e.target === document.getElementById('productModal')) closeModal();
@@ -280,11 +278,9 @@ function closeModal() {
   selectedSize = null;
 }
 
-// Додавання в кошик з модалу
 function addToCartFromModal() {
   if (!currentProduct) return;
   
-  // Перевірка розміру для одягу
   const categoryLower = currentProduct.category?.toLowerCase() || '';
   if (categoryLower.includes('одяг') || currentProduct.title.toLowerCase().includes('hoodie') || 
       currentProduct.title.toLowerCase().includes('shirt') || currentProduct.title.toLowerCase().includes('tee')) {
@@ -314,7 +310,6 @@ function addToCartFromModal() {
   closeModal();
 }
 
-// Додавання в улюблене з модалу
 function addToFavoritesFromModal() {
   if (!currentProduct) return;
   
@@ -348,7 +343,6 @@ function updateFavCount() {
   countEl.innerText = favorites.length;
 }
 
-// Ініціалізація
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   updateFavCount();

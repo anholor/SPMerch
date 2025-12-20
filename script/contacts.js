@@ -63,7 +63,6 @@ if (contactForm) {
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
 
-    // Збереження повідомлення
     const messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
     const newMessage = {
       id: Date.now().toString(),
@@ -78,10 +77,8 @@ if (contactForm) {
     messages.push(newMessage);
     localStorage.setItem('contactMessages', JSON.stringify(messages));
 
-    // Повідомлення про успіх
     alert('Дякуємо за ваше повідомлення!\n\nМи зв\'яжемося з вами найближчим часом.');
     
-    // Очистка форми
     contactForm.reset();
   });
 }

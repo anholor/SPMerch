@@ -26,7 +26,7 @@ body{
 
 a{color:inherit;text-decoration:none; cursor:none;}
 
-/* ХЕДЕР */
+                                                                    /* ХЕДЕР */
 header{
   position:fixed;
   top:0;
@@ -146,7 +146,7 @@ nav li:hover::after{width:100%;}
   background-image: url("../images/icons/profileIcn.png");
 }
 
-/* КУРСОР */
+                                                                                        /* КУРСОР */
 .cursor{
   position:fixed;
   top:0; left:0;
@@ -167,7 +167,7 @@ nav li:hover::after{width:100%;}
   border-width:3px;
 }
 
-/* ПРОГРЕС-БАР */
+                                                                                  /* ПРОГРЕС-БАР */
 .progress-bar{
   position:fixed;
   top:0;
@@ -178,7 +178,7 @@ nav li:hover::after{width:100%;}
   transition:width 0.1s ease;
 }
 
-/* ОСНОВНИЙ КОНТЕНТ */
+                                                                            /* ОСНОВНИЙ КОНТЕНТ */
 .favorites-main{
   min-height:calc(100vh - 70px);
   padding:60px 40px 100px;
@@ -210,7 +210,7 @@ nav li:hover::after{width:100%;}
   to{opacity:1; transform:translateY(0);}
 }
 
-/* ТУЛБАР */
+                                                                                          /* ТУЛБАР */
 .favorites-toolbar{
   display:flex;
   justify-content:space-between;
@@ -274,7 +274,7 @@ nav li:hover::after{width:100%;}
   z-index:1;
 }
 
-/* СІТКА ТОВАРІВ */
+                                                                                  /* СІТКА ТОВАРІВ */
 .favorites-container{
   animation: slideUp 0.6s ease 0.2s both;
 }
@@ -422,7 +422,7 @@ nav li:hover::after{width:100%;}
   z-index:1;
 }
 
-/* ПОРОЖНІЙ СПИСОК */
+                                                                              /* ПОРОЖНІЙ СПИСОК */
 .empty-favorites{
   text-align:center;
   padding:100px 20px;
@@ -496,7 +496,7 @@ nav li:hover::after{width:100%;}
   z-index:1;
 }
 
-/* ФУТЕР */
+                                                                                /* ФУТЕР */
 footer{
   background:#050505;
   padding:60px 40px 30px;
@@ -583,7 +583,7 @@ footer{
   letter-spacing:1px;
 }
 
-/* АДАПТИВНІСТЬ */
+                                                                                  /* АДАПТИВНІСТЬ */
 @media (max-width: 1024px) {
   .favorites-grid{
     grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
