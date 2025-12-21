@@ -175,7 +175,7 @@ nav li:hover::after{width:100%;}
   border-width:3px;
 }
 
-                                                  /*  ВЕРХНЯ ПОЛОСА  */
+                                                  /*  ВЕРХНЯ ПОЛОСА */
 .progress-bar{
   position:fixed;
   top:0;
@@ -186,7 +186,7 @@ nav li:hover::after{width:100%;}
   transition:width 0.1s ease;
 }
 
-                                                  /*  ОСНОВНИЙ КОНТЕНТ  */
+                                                  /*  ОСНОВНИЙ КОНТЕНТ */
 .cart-main{
   min-height:calc(100vh - 70px);
   padding:60px 40px 100px;
@@ -218,7 +218,7 @@ nav li:hover::after{width:100%;}
   to{opacity:1; transform:translateY(0);}
 }
 
-                                                  /*  КОНТЕЙНЕР КОШИКА  */
+                                                  /*  КОНТЕЙНЕР КОШИКА */
 .cart-container{
   display:grid;
   grid-template-columns:1fr 400px;
@@ -231,7 +231,7 @@ nav li:hover::after{width:100%;}
   to{opacity:1; transform:translateY(0);}
 }
 
-                                                  /*  ТОВАРИ В КОШИКУ  */
+                                                  /*  ТОВАРИ В КОШИКУ */
 .cart-items{
   display:flex;
   flex-direction:column;
@@ -303,6 +303,26 @@ nav li:hover::after{width:100%;}
   color:var(--gray);
   font-size:12px;
   letter-spacing:2px;
+}
+
+.item-size{
+  color:var(--gray);
+  font-size:13px;
+  letter-spacing:1px;
+  margin-top:5px;
+  padding:8px 12px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:4px;
+  display:inline-block;
+  width:fit-content;
+}
+
+.item-size strong{
+  color:#fff;
+  font-size:14px;
+  letter-spacing:2px;
+  text-shadow:0 0 10px rgba(255,255,255,0.3);
 }
 
 .item-price{
@@ -413,7 +433,7 @@ nav li:hover::after{width:100%;}
   z-index:1;
 }
 
-                                        /*  ПІДСУМОК  */
+                                        /*  ПІДСУМОК */
 .cart-summary{
   display:flex;
   flex-direction:column;
@@ -503,7 +523,7 @@ nav li:hover::after{width:100%;}
   font-size:12px;
 }
 
-                                          /*  ПРОМОКОД  */
+                                          /*  ПРОМОКОД */
 .promo-input-wrapper{
   display:flex;
   gap:10px;
@@ -560,7 +580,7 @@ nav li:hover::after{width:100%;}
   z-index:1;
 }
 
-                                                /*  ПОРОЖНІЙ КОШИК  */
+                                                /*  ПОРОЖНІЙ КОШИК */
 .empty-cart{
   text-align:center;
   padding:100px 20px;
@@ -591,7 +611,7 @@ nav li:hover::after{width:100%;}
   margin-bottom:40px;
 }
 
-                                                /*  ФУТЕР  */
+                                                /*  ФУТЕР */
 footer{
   background:#050505;
   padding:60px 40px 30px;
@@ -678,7 +698,7 @@ footer{
   letter-spacing:1px;
 }
 
-                                            /*  АДАПТИВНІСТЬ  */
+                                            /*  АДАПТИВНІСТЬ */
 @media (max-width: 1024px) {
   .cart-container{
     grid-template-columns:1fr;

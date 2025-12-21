@@ -17,7 +17,7 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-/*АНІМАЦІЇ*/
+/*АНІМАЦІЯ*/
 const reveals = document.querySelectorAll('.reveal');
 
 function revealOnScroll() {
@@ -65,7 +65,7 @@ function animateCursor(){
 }
 animateCursor();
 
-document.querySelectorAll('button, .nav-icons span, .logo, nav li, .cover, .product').forEach(el => {
+document.querySelectorAll('button, .nav-icons span, .logo, nav li, .cover, .product-card').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('active'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
 });
@@ -79,7 +79,6 @@ function subscribe() {
   email.value = '';
 }
 
-/*КОШИК*/
 function getCart() {
   return JSON.parse(localStorage.getItem('cart')) || [];
 }
@@ -99,7 +98,6 @@ function updateCartCount() {
   countEl.innerText = total;
 }
 
-/*УЛЮБЛЕНЕ*/
 function getFavorites() {
   return JSON.parse(localStorage.getItem('favorites')) || [];
 }
@@ -117,7 +115,6 @@ function updateFavCount() {
   countEl.innerText = favorites.length;
 }
 
-/*ДОДАВАННЯ В КОШИК*/
 function addProductToCart(product) {
   let cart = getCart();
 
@@ -132,39 +129,6 @@ function addProductToCart(product) {
   animateCartIcon();
 }
 
-/*ДОДАВАННЯ В УЛЮБЛЕНЕ*/
-function addToFavorites(product) {
-  let favorites = getFavorites();
-
-  const existing = favorites.find(item => item.id === product.id);
-  if (existing) {
-    alert('Цей товар вже у вашому списку улюбленого!');
-    return;
-  }
-
-
-  favorites.push(product);
-  saveFavorites(favorites);
-  animateFavIcon();
-  alert('Товар додано до улюбленого!');
-}
-
-/*ПРИВ'ЯЗКА ДО КНОПКИ КОШИКА*/
-function handleAddToCart(btn) {
-  const card = btn.closest('.product-card') || btn.closest('.product');
-  if (!card) return;
-
-  const product = {
-    id: card.dataset.id || Date.now().toString(),
-    title: card.querySelector('.product-name')?.innerText || card.querySelector('h3')?.innerText || '',
-    price: card.querySelector('.product-price')?.innerText || card.querySelector('.price')?.innerText || '',
-    image: card.querySelector('.product-image')?.src || card.querySelector('img')?.src || ''
-  };
-
-  addProductToCart(product);
-}
-
-/*ДО УЛЮБЛЕНОГО*/
 function addToFavorites(button) {
   const card = button.closest('.product-card');
   if (!card) return;
@@ -191,7 +155,36 @@ function addToFavorites(button) {
   alert('Товар додано до улюбленого!');
 }
 
-/*АНІМАЦІЯ ІКОНКИ КОШИКА*/
+function handleAddToCart(btn) {
+  const card = btn.closest('.product-card') || btn.closest('.product');
+  if (!card) return;
+
+  const product = {
+    id: card.dataset.id || Date.now().toString(),
+    title: card.querySelector('.product-name')?.innerText || card.querySelector('h3')?.innerText || '',
+    price: card.querySelector('.product-price')?.innerText || card.querySelector('.price')?.innerText || '',
+    image: card.querySelector('.product-image')?.src || card.querySelector('img')?.src || '',
+    size: 'ONE SIZE'
+  };
+
+  addProductToCart(product);
+}
+
+function handleAddToFavorites(btn) {
+  const card = btn.closest('.product-card') || btn.closest('.product');
+  if (!card) return;
+
+  const product = {
+    id: card.dataset.id || Date.now().toString(),
+    title: card.querySelector('.product-name')?.innerText || card.querySelector('h3')?.innerText || '',
+    price: card.querySelector('.product-price')?.innerText || card.querySelector('.price')?.innerText || '',
+    category: card.querySelector('.product-category')?.innerText || 'МЕРЧ',
+    image: card.querySelector('.product-image')?.src || card.querySelector('img')?.src || ''
+  };
+
+  addToFavorites(product);
+}
+
 function animateCartIcon() {
   const icon = document.getElementById('cartIcon');
   if (!icon) return;
@@ -200,7 +193,6 @@ function animateCartIcon() {
   setTimeout(() => icon.classList.remove('added'), 300);
 }
 
-/*АНІМАЦІЯ ІКОНКИ УЛЮБЛЕНОГО*/
 function animateFavIcon() {
   const icon = document.getElementById('favIcon');
   if (!icon) return;
@@ -209,7 +201,6 @@ function animateFavIcon() {
   setTimeout(() => icon.classList.remove('added'), 300);
 }
 
-/*АНІМАЦІЯ КНОПКИ*/
 function animateBtn(btn) {
   btn.classList.add('added');
   setTimeout(() => btn.classList.remove('added'), 400);
@@ -334,22 +325,100 @@ function addToFavoritesFromModal() {
   alert('Товар додано до улюбленого!');
 }
 
-function updateCartCount() {
-  const countEl = document.getElementById('cartCount');
-  if (!countEl) return;
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const total = cart.reduce((sum, item) => sum + item.qty, 0);
-  countEl.innerText = total;
-}
-
-function updateFavCount() {
-  const countEl = document.getElementById('favCount');
-  if (!countEl) return;
-  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  countEl.innerText = favorites.length;
-}
-
+/* ФІЛЬТРИ ТА ПОШУК */
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   updateFavCount();
+
+  const searchInput = document.getElementById('searchInput');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const categorySection = document.querySelectorAll('.category-section');
+
+  let activeFilter = 'all';
+
+  // Фільтри
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  // Пошук
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      applyFilters();
+    });
+  }
+
+  function applyFilters() {
+    const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    let hasVisibleProducts = false;
+
+    categorySection.forEach(section => {
+      const category = section.dataset.category;
+      const products = section.querySelectorAll('.product-card');
+      let visibleInSection = false;
+
+      let categoryMatch = activeFilter === 'all' || 
+                         (activeFilter === 'clothing' && category === 'clothing') ||
+                         (activeFilter === 'vinyl' && category === 'vinyl') ||
+                         (activeFilter === 'accessories' && category === 'accessories');
+
+      if (activeFilter === 'limited') {
+        categoryMatch = false;
+        products.forEach(product => {
+          const productCategory = product.querySelector('.product-category')?.innerText.toLowerCase() || '';
+          if (productCategory.includes('лімітований')) {
+            categoryMatch = true;
+          }
+        });
+      }
+
+      products.forEach(product => {
+        const name = product.querySelector('.product-name')?.innerText.toLowerCase() || '';
+        const productCategory = product.querySelector('.product-category')?.innerText.toLowerCase() || '';
+        
+        const searchMatch = searchTerm === '' || 
+                          name.includes(searchTerm) || 
+                          productCategory.includes(searchTerm);
+
+        let limitedMatch = true;
+        if (activeFilter === 'limited') {
+          limitedMatch = productCategory.includes('лімітований');
+        }
+
+        if (categoryMatch && searchMatch && limitedMatch) {
+          product.style.display = 'block';
+          visibleInSection = true;
+          hasVisibleProducts = true;
+        } else {
+          product.style.display = 'none';
+        }
+      });
+
+      if (visibleInSection && categoryMatch) {
+        section.style.display = 'block';
+      } else {
+        section.style.display = 'none';
+      }
+    });
+
+    let noResults = document.querySelector('.no-results');
+    if (!noResults) {
+      noResults = document.createElement('div');
+      noResults.className = 'no-results';
+      noResults.innerHTML = '<h2>НІЧОГО НЕ ЗНАЙДЕНО</h2><p>Спробуйте змінити параметри пошуку або фільтри</p>';
+      document.getElementById('productsContainer').appendChild(noResults);
+    }
+
+    if (!hasVisibleProducts) {
+      noResults.style.display = 'block';
+    } else {
+      noResults.style.display = 'none';
+    }
+  }
 });

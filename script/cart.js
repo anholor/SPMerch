@@ -49,7 +49,6 @@ document.querySelectorAll('button, .nav-icons span, .logo, nav li, .cart-item, .
   el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
 });
 
-
 function updateFavCount() {
   const countEl = document.getElementById('favCount');
   if (!countEl) return;
@@ -100,21 +99,22 @@ function renderCart() {
   if (emptyCart) emptyCart.style.display = 'none';
   if (cartContainer) cartContainer.style.display = 'grid';
 
-  cartItems.innerHTML = cart.map(item => `
-    <div class="cart-item" data-id="${item.id}">
+  cartItems.innerHTML = cart.map((item, index) => `
+    <div class="cart-item" data-id="${item.id}" data-index="${index}">
       <img src="${item.image}" alt="${item.title}" class="item-image">
       
       <div class="item-details">
         <h3 class="item-name">${item.title}</h3>
         <p class="item-category">МЕРЧ</p>
+        ${item.size ? `<p class="item-size">Розмір: <strong>${item.size}</strong></p>` : ''}
         <p class="item-price">${item.price}</p>
         
         <div class="quantity-control">
-          <button class="qty-btn" onclick="changeQuantity('${item.id}', -1)">
+          <button class="qty-btn" onclick="changeQuantity(${index}, -1)">
             <span>−</span>
           </button>
           <span class="qty-value">${item.qty}</span>
-          <button class="qty-btn" onclick="changeQuantity('${item.id}', 1)">
+          <button class="qty-btn" onclick="changeQuantity(${index}, 1)">
             <span>+</span>
           </button>
         </div>
@@ -122,7 +122,7 @@ function renderCart() {
       
       <div class="item-actions">
         <div class="item-total">${parsePrice(item.price) * item.qty} ₴</div>
-        <button class="remove-btn" onclick="removeItem('${item.id}')">
+        <button class="remove-btn" onclick="removeItem(${index})">
           <span>ВИДАЛИТИ</span>
         </button>
       </div>
@@ -137,32 +137,35 @@ function renderCart() {
   });
 }
 
-function changeQuantity(id, delta) {
+function changeQuantity(index, delta) {
   let cart = getCart();
-  const item = cart.find(i => i.id === id);
   
-  if (!item) return;
+  if (!cart[index]) return;
 
-  item.qty += delta;
+  cart[index].qty += delta;
 
-  if (item.qty <= 0) {
-    removeItem(id);
+  if (cart[index].qty <= 0) {
+    removeItem(index);
     return;
   }
 
   saveCart(cart);
 }
 
-function removeItem(id) {
+function removeItem(index) {
   let cart = getCart();
-  cart = cart.filter(item => item.id !== id);
-  saveCart(cart);
   
-  const itemEl = document.querySelector(`.cart-item[data-id="${id}"]`);
+  const itemEl = document.querySelector(`.cart-item[data-index="${index}"]`);
   if (itemEl) {
     itemEl.style.opacity = '0';
     itemEl.style.transform = 'translateX(-100%)';
-    setTimeout(() => renderCart(), 300);
+    setTimeout(() => {
+      cart.splice(index, 1);
+      saveCart(cart);
+    }, 300);
+  } else {
+    cart.splice(index, 1);
+    saveCart(cart);
   }
 }
 
@@ -191,7 +194,7 @@ function applyPromo() {
 
   const code = promoInput.value.toUpperCase();
 
-//ПРОМОКОДИ
+  //ПРОМОКОДИ
   const validCodes = {
     'SILENT10': 10,
     'MERCH15': 15,
