@@ -453,7 +453,6 @@ button span{
   letter-spacing:4px;
 }
 
-/*  ABOUT  */
 #about{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -1135,7 +1134,7 @@ footer::before{
   font-size:14px;
 }
 
-/* СІТКА РОЗМІРІВ */
+                                                                    /* СІТКА РОЗМІРІВ */
 .size-selector{
   margin:25px 0;
   padding:25px;
@@ -1304,7 +1303,7 @@ footer::before{
   border-color:rgba(255,255,255,0.5);
 }
 
-/* АДАПТИВНІСТЬ */
+                                                      /* АДАПТИВНІСТЬ */
 @media (max-width: 768px) {
   .modal-body{
     grid-template-columns:1fr;
